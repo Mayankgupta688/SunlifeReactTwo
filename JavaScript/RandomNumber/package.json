@@ -1,0 +1,11 @@
+{
+  "name": "randomnumber",
+  "version": "1.0.0",
+  "description": "Random Number",
+  "main": "index.js",
+  "author": "Mayank Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "randomize": "^0.0.4"
+  }
+}
