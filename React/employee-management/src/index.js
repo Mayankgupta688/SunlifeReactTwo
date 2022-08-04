@@ -1,12 +1,9 @@
 import ReactDOM from "react-dom";
 import React from "react";
-
-import AttendenceManagementContainer from "./containers/SalaryManagementContainer";
+import Component from "./components/EmployeeListingComponent";
 
 ReactDOM.render((
     <div>
-        <AttendenceManagementContainer></AttendenceManagementContainer>
+        <Component></Component>
     </div>
 ), document.getElementById("root"));
-
-
