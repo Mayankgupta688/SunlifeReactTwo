@@ -1,9 +1,11 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import Component from "./components/EmployeeListingComponent";
+import Component from "./classComponent/UpdateTimeComponent";
 
 ReactDOM.render((
     <div>
-        <Component></Component>
+        <Component counter="100"></Component>
     </div>
 ), document.getElementById("root"));
+
+
