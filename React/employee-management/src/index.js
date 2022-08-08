@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import Component from "./classComponent/UpdateTimeComponent";
+import Component from "./classComponent/DataComponent";
 
 ReactDOM.render((
     <div>
