@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import Component from "./classComponent/DataComponent";
+import Component from "./classComponent/EmployeeListingComponent";
 
 ReactDOM.render((
     <div>
-        <Component counter="100"></Component>
+        <Component></Component>
     </div>
 ), document.getElementById("root"));
 
