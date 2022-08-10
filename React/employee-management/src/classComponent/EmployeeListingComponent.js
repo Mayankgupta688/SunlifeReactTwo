@@ -1,72 +1,74 @@
 import React from 'react';
 import Axios from "axios";
 import "../componentStyles/EmployeeListingComponent.css";
+import AddEmployeeComponent from './AddEmployeeComponent';
+import FilterEmployeeComponent from "./FilterEmployeeComponent";
+import EmployeeDetailsComponent from "./EmployeeDetailsComponent";
 
 export default class EmployeeListingComponent extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.deleteEmployee = this.deleteEmployee.bind(this);
         this.filterData = this.filterData.bind(this);
+        this.refreshFrontend = this.refreshFrontend.bind(this);
         this.state = {
             masterEmployeeList: [],
             employeeList: [],
-            hasApiError: false, 
-            textValue: ""
+            hasApiError: false
         };
-        
     }
 
-    deleteEmployee(event) { 
-        var employeeToDelete = event.target.name;
+    deleteEmployee(employeeToDelete) { 
 
-        var newArray = this.state.masterEmployeeList.filter((employee) => {
-            return employee.id !== employeeToDelete;
-        });
+        Axios.delete("http://localhost:4000/employees/" + employeeToDelete).then(() => {
+            alert("Employee Got Deleted...");
 
-        this.setState({
-            ...this.state,
-            employeeList: newArray,
-            masterEmployeeList: newArray
-        }, () => {
-            var filteredEmployees = this.state.employeeList.filter((employee) => {
-                return employee.name.toLowerCase().indexOf(this.state.textValue.toLowerCase()) > -1
-            })
-    
+            var newArray = this.state.masterEmployeeList.filter((employee) => {
+                return employee.id !== employeeToDelete;
+            });
+
             this.setState({
                 ...this.state,
-                employeeList: filteredEmployees
+                employeeList: newArray,
+                masterEmployeeList: newArray
+            }, () => {
+                var filteredEmployees = this.state.employeeList.filter((employee) => {
+                    return employee.name.toLowerCase().indexOf(this.state.textValue.toLowerCase()) > -1
+                })
+        
+                this.setState({
+                    ...this.state,
+                    employeeList: filteredEmployees
+                })
             })
+    
+        }, () => {
+            alert("Error Deleting Employee....")
         })
     }
 
-    filterData(event) {
-        debugger;
-        var filterValue = event.target.value;
+    filterData(filterTextValue) {
         var filteredEmployees = this.state.masterEmployeeList.filter((employee) => {
-            return employee.name.toLowerCase().indexOf(filterValue.toLowerCase()) > -1
+            return employee.name.toLowerCase().indexOf(filterTextValue.toLowerCase()) > -1
         })
 
         this.setState({
             ...this.state,
-            employeeList: filteredEmployees,
-            textValue: event.target.value
+            employeeList: filteredEmployees
         })
     }
 
     render() {
         return (
             <div style={{margin: "20px"}}>
-                <b style={{display: "inline-block", marginRight: "10px"}}>Filter Employees</b><input type="text" onChange={this.filterData} value={this.state.textValue} /><br/><br/><hr/>
+
+                <AddEmployeeComponent refreshFrontend={this.refreshFrontend}></AddEmployeeComponent><br/><br/>
+
+                <FilterEmployeeComponent filterData={this.filterData}></FilterEmployeeComponent>
+
                 {this.state.employeeList.map((employee) => {
                     return (
-                        <div className="card">
-                            <img src="https://st.depositphotos.com/1594308/4626/i/950/depositphotos_46262829-stock-photo-happy-employee.jpg" className="card-img-top" alt={employee.name} />
-                            <div className="card-body">
-                                <h5 className="card-title">{employee.name}</h5>
-                                <p className="card-text">Employee Id is <b>{employee.id}</b> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <input type="button" name={employee.id} value={ "Delete " + employee.name } className="btn btn-primary" onClick={this.deleteEmployee} />
-                            </div>
-                        </div>
+                        <EmployeeDetailsComponent employee={employee} deleteEmployee={this.deleteEmployee}></EmployeeDetailsComponent>
                     )
                 })}
 
@@ -75,11 +77,21 @@ export default class EmployeeListingComponent extends React.Component {
         )
     }
 
-    componentDidMount() {
-        Axios.get("https://5a530e1477e1d20012fa066a.mockapi.io/login").then((response) => {
+    refreshFrontend() {
+        Axios.get("http://localhost:4000/employees").then((response) => {
             this.setState({
                 employeeList: response.data,
                 masterEmployeeList: response.data
+            })
+        })
+    }
+
+    componentDidMount() {
+        Axios.get("http://localhost:4000/employees").then((response) => {
+            this.setState({
+                employeeList: response.data,
+                masterEmployeeList: response.data,
+                textValue: ""
             })
         }, (errorResponse) => {
             alert(errorResponse.code)
