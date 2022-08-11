@@ -36,7 +36,6 @@ export default class StockComponent extends React.Component {
                         stockColor: "green"
                     })
                 }
-                
             })
         }, 2000)
     }
