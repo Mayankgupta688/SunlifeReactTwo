@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import Component from "./hooksComponent/StockHooksComponent";
+import Component from "./hooksComponent/ContextComponent";
 
 ReactDOM.render((
     <div>
-        <Component stockUrl="https://priceapi.moneycontrol.com/pricefeed/bse/equitycash/SBI"></Component>
+        <Component></Component>
     </div>
 ), document.getElementById("root"));
 

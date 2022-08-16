@@ -1,22 +1,10 @@
 {
   "employees": [
     {
-      "id": "28",
-      "createdAt": "2019-07-09T20:32:28.258Z",
-      "name": "Efren Windler PhD",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/mbilderbach/128.jpg"
-    },
-    {
       "id": "31",
       "createdAt": "2019-07-09T11:44:07.092Z",
       "name": "Lenora Price",
       "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/incubo82/128.jpg"
-    },
-    {
-      "id": "32",
-      "createdAt": "2019-07-09T20:56:58.884Z",
-      "name": "Clementina Sanford",
-      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/thomasschrijer/128.jpg"
     },
     {
       "id": "33",
@@ -483,6 +471,12 @@
     {
       "name": "Random Name",
       "id": "20010",
+      "avatar": "https://st.depositphotos.com/1594308/4626/i/950/depositphotos_46262829-stock-photo-happy-employee.jpg",
+      "createdAt": "Today"
+    },
+    {
+      "name": "dfsadasdsadas",
+      "id": "20022",
       "avatar": "https://st.depositphotos.com/1594308/4626/i/950/depositphotos_46262829-stock-photo-happy-employee.jpg",
       "createdAt": "Today"
     }
