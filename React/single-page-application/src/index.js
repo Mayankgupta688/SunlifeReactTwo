@@ -1,3 +1,4 @@
 import ReactDOM from "react-dom";
+import Component from "./containers/ContainerComponent";
 
-ReactDOM.render(<h1>Hello World</h1>, document.getElementById("root"))
+ReactDOM.render(<Component></Component>, document.getElementById("root"))
