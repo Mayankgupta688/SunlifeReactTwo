@@ -1,3 +1,5 @@
+import { Route } from "react-router-dom"
+import HomeComponent from "./HomeComponent";
 export default function HelpComponent(props) {
     debugger;
     function redirectUser() {
@@ -5,7 +7,7 @@ export default function HelpComponent(props) {
     }
     return (
         <div>
-            <h1>This is Help Component</h1>
+            <h1>This is Help Component {props.match.params.id} {props.match.params.name}</h1>
             <input type="button" onClick={redirectUser} value="Redirect To Home" />
         </div>
     )

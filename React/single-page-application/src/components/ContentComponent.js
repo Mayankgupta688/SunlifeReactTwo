@@ -13,6 +13,10 @@ export default function ContentComponent() {
             <Route exact path="/home" component={EmployeeListingHooksComponent}></Route>
             <Route exact path="/about" component={AboutComponent}></Route>
             <Route exact path="/help" component={HelpComponent}></Route>
+            <Route exact path="/employee/:id/username/:name" render={(props) =>{
+                debugger;
+                return <HelpComponent {...props}></HelpComponent>
+            }}></Route>
         </div>
     )
 }
