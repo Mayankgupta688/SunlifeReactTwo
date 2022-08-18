@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import Component from "./hooksComponent/ContextComponent";
+import Component from "./classComponent/LazyLoadingComponent";
 
 ReactDOM.render((
     <div>

@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import  { Provider} from "react-redux";
 import { createStore } from "redux";
@@ -13,6 +12,5 @@ ReactDOM.render((
     <Provider store={store}>
         <ListComponent></ListComponent>
         <HomeComponent></HomeComponent>
-        
     </Provider>
 ), document.getElementById("root"))

@@ -1,4 +1,4 @@
-export default function employees(employeeStore=[], action) {
+export default function employees_reducer(employeeDataInStore=[], action) {
     if(action.type === "add_employees") {
         return action.payload;
     }
@@ -8,11 +8,11 @@ export default function employees(employeeStore=[], action) {
         return [];
     }
 
-    if(action.type === "deleteSpecificEmployeesFromStore") {
-        return employeeStore.filter((employee) => {
+    if(action.type === "delete_employee") {
+        return employeeDataInStore.filter((employee) => {
             return +employee.id !== +action.payload
         })
     }
 
-    return employeeStore;
+    return employeeDataInStore;
 }

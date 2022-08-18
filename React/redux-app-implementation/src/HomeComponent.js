@@ -20,25 +20,25 @@ class HomeComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <h1>List of Employees is Given Below</h1>
-                {this.props.employees.map((employee) => {
+                {this.props.emp.map((employee) => {
                     return (
-                        <div>
+                        <>
                             <h2>Employee Name is {employee.name}</h2>
-                        </div>
+                        </>
                     )
                 })}
                 <input type="button" value="Get Data From Axios" onClick={this.getEmployees.bind(this)} />
                 <input type="button" value="Delete From Store" onClick={this.deleteAllEmployees.bind(this)} />
-            </div>
+            </>
         )
     }
 }
 
 function mapStoreToProps(store) {
     return {
-        employees: store.employees
+        emp: store.employees
     }
 }
 

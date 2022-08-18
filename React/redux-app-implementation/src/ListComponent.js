@@ -5,9 +5,9 @@ class ListComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <h1>Number of Employees are: {this.props.employees.length}</h1>
-            </div>
+            </>
         )
     }
 }
